@@ -1,0 +1,88 @@
+/* Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Dancing Script', cursive;
+  background-color: #f1b6cf;
+}
+
+/* Contêiner da porta ocupa a tela inteira */
+.porta-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  z-index: 9999;
+  perspective: 1200px;
+}
+
+/* Cada metade da porta */
+.porta {
+  width: 50%;             
+  height: 100%;
+  background-image: url('https://files.idyllic.app/files/static/233675?width=640&optimizer=image');
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: transform 1.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* metade esquerda */
+.porta.esquerda {
+  background-position: left center;
+  transform-origin: left center;
+}
+/* metade direita */
+.porta.direita {
+  background-position: right center;
+  transform-origin: right center;
+}
+
+/* Animação abrir */
+.porta.aberta.esquerda {
+  transform: translateX(-100%);
+}
+.porta.aberta.direita {
+  transform: translateX(100%);
+}
+
+/* Conteúdo do site */
+.conteudo-site {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  padding: 50px;
+  text-align: center;
+  color: #f85ea6;
+}
+
+/* Foto redonda */
+.photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+}
+
+/* Confete animado */
+.confete {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: hsl(var(--hue), 70%, 60%);
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: cair linear forwards;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+@keyframes cair {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
